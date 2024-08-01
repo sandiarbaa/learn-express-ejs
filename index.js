@@ -1,12 +1,13 @@
+const path = require("path");
 const express = require("express");
 const app = express();
 
-// setting default view engine express, ini pakai ejs
-app.set("view engine", "ejs"); // jadinya harus membuat folder views
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views")); // menggabungkan path direktori utama (yaitu dimana file index.js itu berada) dengan folder views, agar projek website nya bisa di akses di terminal manapun, mengatasi error
+// ~/OneDrive/Documents/coding/expressjs/learn-express-ejs/views
 
-// merender file yg ada di folder views ke route url tertentu
 app.get("/", (req, res) => {
-  res.render("home"); // pemanggilan file sudah relatif terhadap folder views, no file extension tetap ok
+  res.render("home");
 });
 
 app.listen(8080, () => {
