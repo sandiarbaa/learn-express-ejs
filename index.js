@@ -3,17 +3,23 @@ const express = require("express");
 const app = express();
 
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views")); // menggabungkan path direktori utama (yaitu dimana file index.js itu berada) dengan folder views, agar projek website nya bisa di akses di terminal manapun, mengatasi error
-// ~/OneDrive/Documents/coding/expressjs/learn-express-ejs/views
+app.set("views", path.join(__dirname, "views"));
 
+// Routes
 app.get("/", (req, res) => {
   res.render("home");
 });
 
 app.get("/random", (req, res) => {
   const num = Math.floor(Math.random() * 10) + 1;
-  // res.render("random", { random: num }); // cara 1 passing data ke template | menggunakan alias
-  res.render("random", { num }); // cara 2 passing data ke template | langsung destructuring karena dia objek
+  res.render("random", { num });
+});
+
+// mendapatkan data dari parameter, kemudian binding/passing/kirim ke dalam view nya untuk ditampilkan, agar datanya dinamis
+app.get("/tag/:tag", (req, res) => {
+  const { tag } = req.params; // Get the tag from the URL
+  const tags = tag.charAt(0).toUpperCase() + tag.slice(1); // Capitalize the first letter
+  res.render("tag", { tag, tags });
 });
 
 app.listen(8080, () => {
