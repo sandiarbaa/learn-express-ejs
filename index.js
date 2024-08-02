@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const app = express();
+const tagsData = require("./data.json");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -18,8 +19,15 @@ app.get("/random", (req, res) => {
 
 app.get("/tag/:tag", (req, res) => {
   const { tag } = req.params;
-  const tags = tag.charAt(0).toUpperCase() + tag.slice(1);
-  res.render("tag", { tag, tags });
+  const data = tagsData[tag];
+
+  // res.render("tag", { data });
+
+  if (data) {
+    res.render("tag", { data });
+  } else {
+    res.render("notfound", { tag });
+  }
 });
 
 app.get("/cats", (req, res) => {
