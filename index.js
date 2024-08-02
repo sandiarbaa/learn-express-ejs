@@ -12,7 +12,8 @@ app.get("/", (req, res) => {
 
 app.get("/random", (req, res) => {
   const num = Math.floor(Math.random() * 10) + 1;
-  res.render("random", { num });
+  const numStatus = num % 2 === 0 ? "Genap" : "Ganjil";
+  res.render("random", { numStatus, num });
 });
 
 // mendapatkan data dari parameter, kemudian binding/passing/kirim ke dalam view nya untuk ditampilkan, agar datanya dinamis

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random</title>
+  </head>
+  <body>
+    <h1>Random number : <%= num %></h1>
+
+    <!-- logic nya ada di route -->
+    <h3><%= numStatus %></h3>
+
+    <!-- interpolation menggunakan ejs, jadi pengelolaan logic atau penggunaan sintaks js nya di html/file view -->
+    <!-- menggunakan if -->
+    <% if(num % 2 === 0) { %>
+    <h3>Angka Genap</h3>
+    <% } else {%>
+    <h3>Angka Ganjil</h3>
+    <% } %>
+
+    <!-- menggunakan ternary | menggunakan operator = di sintak ejs nya itu berarti mau merender hasil dari logic nya ke html/file view-->
+    <h3>That number is: <%= num % 2 === 0 ? 'Even' : 'Odd' %></h3>
+  </body>
+</html>
