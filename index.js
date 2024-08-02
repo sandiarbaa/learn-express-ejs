@@ -7,7 +7,7 @@ app.set("views", path.join(__dirname, "views"));
 
 // Routes
 app.get("/", (req, res) => {
-  res.render("home");
+  res.render("home"); // parameter pertama untuk merender file mana
 });
 
 app.get("/random", (req, res) => {
@@ -16,11 +16,15 @@ app.get("/random", (req, res) => {
   res.render("random", { numStatus, num });
 });
 
-// mendapatkan data dari parameter, kemudian binding/passing/kirim ke dalam view nya untuk ditampilkan, agar datanya dinamis
 app.get("/tag/:tag", (req, res) => {
-  const { tag } = req.params; // Get the tag from the URL
-  const tags = tag.charAt(0).toUpperCase() + tag.slice(1); // Capitalize the first letter
+  const { tag } = req.params;
+  const tags = tag.charAt(0).toUpperCase() + tag.slice(1);
   res.render("tag", { tag, tags });
+});
+
+app.get("/cats", (req, res) => {
+  const cats = ["Blue", "Rocket", "Monty", "Stephanie", "Winston"];
+  res.render("cats", { cats });
 });
 
 app.listen(8080, () => {
