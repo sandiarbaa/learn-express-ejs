@@ -15,14 +15,22 @@
   // 	],
   // 	"description": "Log output to console"
   // }
-  "Render js only in ejs": {
+  "EJS Tag": {
     "prefix": "ejs",
-    "body": "<% $1 %>",
-    "description": "to show javascript syntaks only"
+    "body": "<% $1 %>"
   },
-  "Render value js in html with ejs": {
+  "EJS Tag If Statement": {
+    "prefix": "ejs",
+    "body": ["<% if($1) { %>", " $2", "<% } %>"]
+  },
+  "EJS Tag Output Value": {
     "prefix": "ejs=",
     "body": "<%= $1 %>",
-    "description": "to render js value in html with ejs"
+    "description": "to render js value in html"
+  },
+  "EJS Tag Output Escaped": {
+    "prefix": "ejs-",
+    "body": "<%- $1 %>",
+    "description": "to include file js view in html"
   }
 }

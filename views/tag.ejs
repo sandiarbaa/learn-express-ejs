@@ -1,61 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= data.title %> - SAP Dev</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/tag/react">EJS</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/tag/javascript">Javascript</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/random">Random</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+<%- include('partials/header.ejs') %> <%- include('partials/navbar.ejs') %>
 
-    <!-- kalau gambar ada, maka render tag img beserta gambarnya -->
-    <% if(data.img) { %>
-    <img src="<%= data.img %>" alt="<%= data.title %>" />
-    <% } %>
+<!-- kalau gambar ada, maka render tag img beserta gambarnya -->
+<% if(data.img) { %>
+<img src="<%= data.img %>" alt="<%= data.title %>" />
+<% } %>
 
-    <!-- main content -->
-    <h1>Tag: <%= data.title %></h1>
-    <h4><%= data.description %></h4>
-    <p>Followers: <%= data.followers %></p>
+<!-- main content -->
+<h1>Tag: <%= data.title %></h1>
+<h3><%= data.description %></h3>
+<p>Followers: <%= data.followers %></p>
 
-    <hr />
+<hr />
 
-    <!-- merender postingan untuk setiap tag -->
-    <% for (let post of data.posts) { %>
-    <article>
-      <p><%= post.title %> - <%= post.author %></p>
-    </article>
-    <% } %>
+<!-- merender postingan untuk setiap tag -->
+<% for (let post of data.posts) { %>
+<article>
+  <p><%= post.title %> - <%= post.author %></p>
+</article>
 
-    <script src="/js/bootstrap.min.js"></script>
-  </body>
-</html>
+<% } %> <%- include('partials/footer.ejs') %>
